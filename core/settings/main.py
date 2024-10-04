@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+from core.settings import load_env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&6)yfva^xr)&epw&x-4j-drop0tlgo=xgwi_1uc33^+w^@b_lb'
+SECRET_KEY = load_env.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = load_env.DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = load_env.ALLOWED_HOSTS
 
 
 # Application definition
@@ -84,8 +86,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':  load_env.POSTGRES_DB,
+        'USER': load_env.POSTGRES_USER,
+        'PASSWORD': load_env.POSTGRES_PASSWORD,
+        'HOST': load_env.POSTGRES_HOST,
+        'PORT': load_env.POSTGRES_PORT
     }
 }
 

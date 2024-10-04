@@ -1,6 +1,11 @@
 .venv
 .idea
 __pycache__/
-*/migrations/*.py
 .env
 db.sqlite3
+*.pyc
+logs/
+staticfiles/
+media/
+**/migrations/00*.py
+**/migrations/*__pycache__
