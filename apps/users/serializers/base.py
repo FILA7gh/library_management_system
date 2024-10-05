@@ -4,7 +4,7 @@ from rest_framework import serializers
 User = get_user_model()
 
 
-class BaseSerializer(serializers.ModelSerializer):
+class BaseUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'

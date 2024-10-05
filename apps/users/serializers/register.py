@@ -2,16 +2,16 @@ from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework import serializers
 
-from apps.users.serializers.base import BaseSerializer as user_serializer
+from apps.users.serializers.base import BaseUserSerializer
 
 User = get_user_model()
 
 
-class RegisterSerializer(user_serializer):
+class RegisterSerializer(BaseUserSerializer):
     password = serializers.CharField(write_only=True)
     password_confirmed = serializers.CharField(write_only=True)
 
-    class Meta(user_serializer.Meta):
+    class Meta(BaseUserSerializer.Meta):
         fields = ('username', 'password', 'password_confirmed', 'email', 'first_name', 'last_name')
 
     def validate_username(self, value):

@@ -23,3 +23,7 @@ class Author(models.Model):
         db_table = 'authors'
         verbose_name = _('Author')
         verbose_name_plural = _('Authors')
+        constraints = [
+            models.UniqueConstraint(fields=['first_name', 'last_name', 'date_of_birth', 'date_of_death'],
+                                    name='unique_author')
+        ]
