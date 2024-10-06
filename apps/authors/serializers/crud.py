@@ -3,14 +3,14 @@ from apps.authors.serializers.base import BaseAuthorSerializer
 
 class CreateUpdateAuthorSerializer(BaseAuthorSerializer):
     class Meta(BaseAuthorSerializer.Meta):
-        fields = ('first_name', 'last_name', 'biography', 'date_of_birth', 'date_of_death')
+        exclude = ("id",)
 
 
 class DetailAuthorSerializer(BaseAuthorSerializer):
     class Meta(BaseAuthorSerializer.Meta):
-        pass
+        fields = "__all__"
 
 
 class ListAuthorSerializer(BaseAuthorSerializer):
     class Meta(BaseAuthorSerializer.Meta):
-        fields = ('first_name', 'last_name', 'date_of_birth', 'date_of_death')
+        fields = ("id", "first_name", "last_name", "date_of_birth", "date_of_death")

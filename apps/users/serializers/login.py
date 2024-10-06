@@ -10,15 +10,15 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
 
     def validate(self, attrs):
-        username = attrs.get('username')
-        password = attrs.get('password')
+        username = attrs.get("username")
+        password = attrs.get("password")
 
         user = User.objects.filter(username=username).first()
 
         if user is None:
-            raise ValidationError('User not found!')
+            raise ValidationError("User not found!")
 
         if not user.check_password(password):
-            raise ValidationError('Invalid password!')
+            raise ValidationError("Invalid password!")
 
         return attrs

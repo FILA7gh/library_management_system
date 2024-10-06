@@ -43,6 +43,6 @@ class CustomUser(AbstractUser):
 
     class Meta:
         swappable = "AUTH_USER_MODEL"
-        db_table = 'users'
+        db_table = "users"
         verbose_name = _("user")
         verbose_name_plural = _("users")

@@ -19,8 +19,10 @@ class RegisterView(generics.CreateAPIView):
         user = serializer.save()
         return Response(
             {
-                "user": RegisterSerializer(user, context=self.get_serializer_context()).data,
+                "user": RegisterSerializer(
+                    user, context=self.get_serializer_context()
+                ).data,
                 "message": "User created successfully.",
             },
-            status=status.HTTP_201_CREATED
+            status=status.HTTP_201_CREATED,
         )

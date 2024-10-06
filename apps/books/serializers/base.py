@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from apps.authors.models import Author
+from apps.books.models import Book
 
 
-class BaseAuthorSerializer(serializers.ModelSerializer):
+class BaseBookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Author
+        model = Book
         """
         Either fields or exclude must be implemented
         """
